@@ -182,6 +182,18 @@ class Web extends SecurableObject
         }
         return $this->getProperty("CurrentUser");
     }
+    
+     /**
+     * Returns the file object withe the specified uniqueID.
+     * @param string uniqueID The unique ID of the file.
+     * @return File
+     */
+    public function getFileById($uniqueId)
+    {
+        $path = new ResourcePathServiceOperation("getFileById", array($uniqueId), $this->getResourcePath());
+        return new File($this->getContext(), $path);
+    }
+    
     /**
      * Returns the file object located at the specified server-relative URL.
      * @param string $serverRelativeUrl The server relative URL of the file.
